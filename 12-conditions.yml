@@ -13,8 +13,8 @@
   tasks:
   - name: check user exists or not
     ansible.builtin.command: id expense
-  #   register: USER
-  #   ignore_errors: true
+    register: USER
+    ignore_errors: true
 
   # - name: print user information
   #   ansible.builtin.debug:
@@ -27,3 +27,19 @@
   - name: say Hello
     ansible.builtin.debug:
       msg: "Hello"
+
+# Anisble is automcaticaly checking if the user exist or not
+# Output:
+
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 12-conditions.yml
+
+#   PLAY [conditions] *****************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [172.31.19.4]
+
+#   TASK [check user exists or not] ***************************************************************************************************************************************************************
+#   fatal: [172.31.19.4]: FAILED! => {"changed": true, "cmd": ["id", "expense"], "delta": "0:00:00.008042", "end": "2024-06-17 23:48:27.537089", "msg": "non-zero return code", "rc": 1, "start": "2024-06-17 23:48:27.529047", "stderr": "id: ‘expense’: no such user", "stderr_lines": ["id: ‘expense’: no such user"], "stdout": "", "stdout_lines": []}
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   172.31.19.4                : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
