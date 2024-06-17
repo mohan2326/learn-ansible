@@ -1,0 +1,15 @@
+# variables
+# --------------
+# DRY --> dont repeat yourself
+# define/declare the variable. assign value to it
+
+- name: variables
+  hosts: localhost
+  vars: #variable declaration in ansible
+    Course: "ANSIBLE"
+    Trainer: "Mohan"
+    Duration: "15hrs"
+  tasks:
+  - name: print information
+    ansible.builtin.debug:
+      msg: "Hi, We are learning {{Course}} from Trainer {{Trainer}}, Duration is {{Duration}}." #In ansible variable is declare in "{{}}" --> inside braces put ur value
