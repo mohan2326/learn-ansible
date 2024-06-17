@@ -14,7 +14,7 @@
   - name: check user exists or not
     ansible.builtin.command: id expense
     register: USER
-    ignore_errors: true
+    ignore_errors: true #we giving this because we are saying to user we know we will get this error so ignore the error and procces further; output can be seen in #output-1
 
   # - name: print user information
   #   ansible.builtin.debug:
@@ -43,3 +43,23 @@
 
 #   PLAY RECAP ************************************************************************************************************************************************************************************
 #   172.31.19.4                : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+# Output-1:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 12-conditions.yml
+
+#   PLAY [conditions] *****************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [172.31.19.4]
+
+#   TASK [check user exists or not] ***************************************************************************************************************************************************************
+#   fatal: [172.31.19.4]: FAILED! => {"changed": true, "cmd": ["id", "expense"], "delta": "0:00:00.006620", "end": "2024-06-17 23:50:07.568717", "msg": "non-zero return code", "rc": 1, "start": "2024-06-17 23:50:07.562097", "stderr": "id: ‘expense’: no such user", "stderr_lines": ["id: ‘expense’: no such user"], "stdout": "", "stdout_lines": []}
+#   ...ignoring
+
+#   TASK [say Hello] ******************************************************************************************************************************************************************************
+#   ok: [172.31.19.4] => {
+#       "msg": "Hello"
+#   }
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   172.31.19.4                : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1 
