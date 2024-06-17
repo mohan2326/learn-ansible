@@ -14,3 +14,26 @@
   - name: print information #this task will not override the values
     ansible.builtin.debug:
       msg: "Hi, We are learning {{Course}} from Trainer {{Trainer}}, Duration is {{Duration}}."
+
+
+# Output:
+
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=ur password 05-variable-task.yml
+
+# PLAY [variables] ******************************************************************************************************************************************************************************
+
+# TASK [Gathering Facts] ************************************************************************************************************************************************************************
+# ok: [localhost]
+ 
+# TASK [print override information] *************************************************************************************************************************************************************
+# ok: [localhost] => { 
+#     "msg": "Hi, We are learning DevOps from Trainer Mohan, Duration is 15hrs." --> This taks had overidden the values
+# }
+
+# TASK [print information] **********************************************************************************************************************************************************************
+# ok: [localhost] => { 
+#     "msg": "Hi, We are learning Ansible from Trainer Mohan, Duration is 15hrs." --> This task didn't overridden the values
+# }
+
+# PLAY RECAP ************************************************************************************************************************************************************************************
+# localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
