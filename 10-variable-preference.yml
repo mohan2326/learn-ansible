@@ -4,10 +4,10 @@
     WISHES: "Morning from PLAY variable"
   vars_files: # variable mentioned from variable file
   - vars.yaml
-  vars_prompt: # variable mentioned at prompt level
-  - name: WISHES
-    prompt: Please enter Wishes
-    private: false
+  # vars_prompt: # variable mentioned at prompt level
+  # - name: WISHES
+  #   prompt: Please enter Wishes
+  #   private: false
   tasks:
   - name: check preference
     # vars: # variable mentioned at task level
@@ -71,6 +71,23 @@
   # TASK [check preference] ***********************************************************************************************************************************************************************
   # ok: [localhost] => {
   #     "msg": "Hello, Good Morning from variable file"
+  # }
+
+  # PLAY RECAP ************************************************************************************************************************************************************************************
+  # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+
+  # 4th preference: Variable from Prompt
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 10-variable-preference.yml
+  # Please enter Wishes: Moring from Prompt
+
+  # PLAY [variable preference] ********************************************************************************************************************************************************************
+
+  # TASK [Gathering Facts] ************************************************************************************************************************************************************************
+  # ok: [localhost]
+
+  # TASK [check preference] ***********************************************************************************************************************************************************************
+  # ok: [localhost] => {
+  #     "msg": "Hello, Good Moring from Prompt"
   # }
 
   # PLAY RECAP ************************************************************************************************************************************************************************************
