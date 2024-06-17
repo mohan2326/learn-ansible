@@ -30,3 +30,20 @@
   - name: print variables
     ansible.builtin.debug:
       msg: "Course: {{Course}}, Tools covered: {{Tools}}, Experience is: {{Experience}}, is real project: {{RealProject}}"
+
+
+# Output:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 11-data-types.yml
+
+#   PLAY [data types] *****************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [print variables] ************************************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "Course: DevOps with AWS, Tools covered: ['Linux', 'Shell', 'Ansible'], Experience is: {'DevOps': 3, 'AWS': 2, 'Docker': 1}, is real project: True"
+#   }
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
