@@ -14,9 +14,6 @@
       WISHES: "Morning from TASK variable"
     ansible.builtin.debug:
       msg: "Hello, Good {{WISHES}}"
-  - name: get from args
-    ansible.builtin.debug:
-      msg:  "Hello, Good {{WISHES}}"
 
 #We are would like to see which level is taking 1st
 # 1. arguments
