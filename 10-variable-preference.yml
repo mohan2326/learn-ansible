@@ -1,0 +1,25 @@
+- name: variable preference
+  hosts: localhost
+  vars: # variable mentioned at play level
+    WISHES: "Morning from PLAY variable"
+  vars_files: # variable mentioned from variable file
+  - vars.yaml
+  vars_prompt: # variable mentioned at prompt level
+  - name: WISHES
+    prompt: Please enter Wishes
+    private: false
+  tasks:
+  - name: check preference
+    vars: # variable mentioned at task level
+      WISHES: "Morning from TASK variable"
+    ansible.builtin.debug:
+      msg: "Hello, Good {{WISHES}}"
+
+#We are would like to see which level is taking 1st
+# 1. arguments
+# 2. Task level
+# 3. variable files
+# 4. Prompt
+# 5. Play level
+# 6. inventory
+# 7. role level
