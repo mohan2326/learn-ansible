@@ -26,3 +26,23 @@
 
 # PLAY RECAP ************************************************************************************************************************************************************************************
 # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+#Output:
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassoword 09-variable-from-args.yml -e PERSON=Mohan -e WISHES=Morning
+# [WARNING]:  * Failed to parse /home/ec2-user/learn-ansible/inventory.ini with ini plugin: /home/ec2-user/learn-ansible/inventory.ini:35: Section [all:children] includes undefined group:
+# database
+# [WARNING]: Unable to parse /home/ec2-user/learn-ansible/inventory.ini as an inventory source
+# [WARNING]: No inventory was parsed, only implicit localhost is available
+
+# PLAY [variables from arguments] ***************************************************************************************************************************************************************
+
+# TASK [Gathering Facts] ************************************************************************************************************************************************************************
+# ok: [localhost]
+
+# TASK [get from args] **************************************************************************************************************************************************************************
+# ok: [localhost] => {
+#     "msg": "Hello Mohan, Good Morning"
+# }
+
+# PLAY RECAP ************************************************************************************************************************************************************************************
+# localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
