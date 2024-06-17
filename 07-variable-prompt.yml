@@ -13,3 +13,23 @@
   - name: print information
     ansible.builtin.debug:
       msg: "Hi, Username: {{USERNAME}}. Password is: {{PASSWORD}}" # we are declaring to see the information
+
+
+# Output:
+
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 07-variable-prompt.yml 
+# Please enter your username: mohan --> it had prompted the username and we can see it
+# Please enter your password:  -> it had prompted for password; and we have mentioned as false so we can't it.
+
+# PLAY [variables from prompt] ******************************************************************************************************************************************************************
+
+# TASK [Gathering Facts] ************************************************************************************************************************************************************************
+# ok: [localhost]
+
+# TASK [print information] **********************************************************************************************************************************************************************
+# ok: [localhost] => {
+#     "msg": "Hi, Username: mohan. Password is: mohan123" --> just validation to see the information
+# }
+
+# PLAY RECAP ************************************************************************************************************************************************************************************
+# localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
