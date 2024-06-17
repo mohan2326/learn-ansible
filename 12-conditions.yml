@@ -12,7 +12,7 @@
   become: yes
   tasks:
   - name: check user exists or not
-    ansible.builtin.command: id expense
+    ansible.builtin.command: id expense #checking if the user exist or not proceding to nect step or not #output can be seen at #output
     register: USER
     ignore_errors: true #we giving this because we are saying to user we know we will get this error so ignore the error and procces further; output can be seen in #output-1
 
