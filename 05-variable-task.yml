@@ -1,0 +1,16 @@
+- name: variables
+  hosts: localhost
+  vars: #variable declaration --> this is play level variable
+    Course: "Ansible"
+    Trainer: "Mohan"
+    Duration: "15hrs"
+  tasks: #this task will overide the play level values --> this taks level varible
+  - name: print override information
+    vars: # Task level variables --> inheritance and overriding ; 1st preference is variables in the taksk level
+      Course: "DevOps"
+    ansible.builtin.debug:
+      msg: "Hi, We are learning {{Course}} from Trainer {{Trainer}}, Duration is {{Duration}}."
+
+  - name: print information #this task will not override the values
+    ansible.builtin.debug:
+      msg: "Hi, We are learning {{Course}} from Trainer {{Trainer}}, Duration is {{Duration}}."
