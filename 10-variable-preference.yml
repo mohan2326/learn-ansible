@@ -43,7 +43,7 @@
   # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
   # 2nd preference: Task level
-  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 10-variable-preference.yml
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 10-variable-preference.yml
   # Please enter Wishes: Morning from prompt
 
   # PLAY [variable preference] ********************************************************************************************************************************************************************
@@ -60,7 +60,7 @@
   # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
   # 3rd preference: Variable file
-  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 10-variable-preference.yml
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 10-variable-preference.yml
   # Please enter Wishes: Morning from prompt
 
   # PLAY [variable preference] ********************************************************************************************************************************************************************
@@ -77,7 +77,7 @@
   # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 
   # 4th preference: Variable from Prompt
-  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 10-variable-preference.yml
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 10-variable-preference.yml
   # Please enter Wishes: Moring from Prompt
 
   # PLAY [variable preference] ********************************************************************************************************************************************************************
@@ -94,7 +94,7 @@
   # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
 
   # 5th Preference: Variable at Play level
-  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=nopassword 10-variable-preference.yml
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 10-variable-preference.yml
 
   # PLAY [variable preference] ********************************************************************************************************************************************************************
 
@@ -104,6 +104,26 @@
   # TASK [check preference] ***********************************************************************************************************************************************************************
   # ok: [localhost] => {
   #     "msg": "Hello, Good Morning from PLAY variable"
+  # }
+
+  # PLAY RECAP ************************************************************************************************************************************************************************************
+  # localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+  # 6th Preference: Variable in inventory file
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 10-variable-preference.yml
+  # [WARNING]:  * Failed to parse /home/ec2-user/learn-ansible/inventory.ini with ini plugin: /home/ec2-user/learn-ansible/inventory.ini:36: Section [all:children] includes undefined group:
+  # database
+  # [WARNING]: Unable to parse /home/ec2-user/learn-ansible/inventory.ini as an inventory source
+  # [WARNING]: No inventory was parsed, only implicit localhost is available
+
+  # PLAY [variable preference] ********************************************************************************************************************************************************************
+
+  # TASK [Gathering Facts] ************************************************************************************************************************************************************************
+  # ok: [localhost]
+
+  # TASK [check preference] ***********************************************************************************************************************************************************************
+  # ok: [localhost] => {
+  #     "msg": "Hello, Good Morning from Inventory"
   # }
 
   # PLAY RECAP ************************************************************************************************************************************************************************************
