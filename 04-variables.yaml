@@ -16,7 +16,7 @@
 
 
 # Output:
-# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 04-variables.yaml
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 04-variables.yaml
 
 # PLAY [variables] ******************************************************************************************************************************************************************************
 
