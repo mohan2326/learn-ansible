@@ -1,0 +1,15 @@
+#If we have confidentail password can we declare using promt
+
+- name: variables from prompt
+  hosts: localhost
+  vars_prompt: # we have give this 
+  - name: USERNAME
+    prompt: Please enter your username
+    private: false # false means we can see the username
+  - name: PASSWORD
+    prompt: Please enter your password
+    private: true # true means we can't see the password
+  tasks:
+  - name: print information
+    ansible.builtin.debug:
+      msg: "Hi, Username: {{USERNAME}}. Password is: {{PASSWORD}}" # we are declaring to see the information
