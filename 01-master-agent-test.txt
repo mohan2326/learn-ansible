@@ -82,3 +82,8 @@ Output:
         "state": "started",
     }
 If we click on the click on the <pulic-ip-of-ansible-node> you will the nginx homepage on the browser.
+
+Adhoc commands --> manual way
+Playbook --> keep all your modules in a single file with YAML syntax. Run that file. it is done
+
+YAML --> Yet another markup language
