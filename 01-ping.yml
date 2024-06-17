@@ -5,3 +5,19 @@
     ansible.builtin.ping:
 
 #https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ping_module.html
+
+# Running the 1st play book with ping and pong response
+#Command: ansible-playbook -i inventory.ini {inventory file which contains host} -e ansible_user=ec2-user -e ansible_password=Yourpassword 01-ping.yml (the yml file)
+# Output:
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 01-ping.yml
+
+# PLAY [ping the server] ************************************************************************************************************************************************************************
+
+# TASK [Gathering Facts] ************************************************************************************************************************************************************************
+# ok: [172.31.19.4]
+
+# TASK [pinging the server] *********************************************************************************************************************************************************************
+# ok: [172.31.19.4]
+
+# PLAY RECAP ************************************************************************************************************************************************************************************
+# 172.31.19.4                : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
