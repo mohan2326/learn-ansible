@@ -13,3 +13,20 @@
   - name: print information
     ansible.builtin.debug:
       msg: "Hi, We are learning {{Course}} from Trainer {{Trainer}}, Duration is {{Duration}}." #In ansible variable is declare in "{{}}" --> inside braces put ur value
+
+
+# Output:
+# [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 04-variables.yaml
+
+# PLAY [variables] ******************************************************************************************************************************************************************************
+
+# TASK [Gathering Facts] ************************************************************************************************************************************************************************
+# ok: [localhost]
+
+# TASK [print information] **********************************************************************************************************************************************************************
+# ok: [localhost] => {
+#     "msg": "Hi, We are learning ANSIBLE from Trainer Mohan, Duration is 15hrs."
+# }
+
+# PLAY RECAP ************************************************************************************************************************************************************************************
+# localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
