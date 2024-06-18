@@ -3,7 +3,7 @@
   tasks:
   - name: print default value #varible is not defined anywhere so it will error out
     ansible.builtin.debug:
-      msg: "Hello {{course | default('Ansible') }}"
+      msg: "Hello {{course | default('Ansible') }}" # we can define the variable in the message; lookinto output-2
 
 
 # Output-1:
@@ -20,3 +20,21 @@
 
 #   PLAY RECAP ************************************************************************************************************************************************************************************
 #   localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0 
+
+
+# Output-2:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook 14-filters.yml
+#   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+#   PLAY [default value] **************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [print default value] ********************************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "Hello Ansible"
+#   }
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
