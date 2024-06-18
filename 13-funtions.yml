@@ -17,9 +17,32 @@
   - name: number is less than 10
     ansible.builtin.debug:
       msg: "Given number {{number}} is less than 10"
-    when: #number < 10 #number | int < 10
+    when: number < 10 #number | int < 10
 
   - name: number is greater than or equal to 10
     ansible.builtin.debug:
       msg: "Given number {{number}} is greater than or equal to 10"
-    when: #number >= 10 #number | int >= 10
+    when: number >= 10 #number | int >= 10
+
+# Output-1:
+
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 13-funtions.yml
+#   please enter number: 15
+
+#   PLAY [check number] ***************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [number is less than 10] *****************************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "Given number 15 is less than 10"
+#   }
+
+#   TASK [number is greater than or equal to 10] **************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "Given number 15 is greater than or equal to 10"
+#   }
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
