@@ -1,6 +1,22 @@
 - name: default value
   hosts: localhost
   tasks:
-  - name: print default value
+  - name: print default value #varible is not defined anywhere so it will error out
     ansible.builtin.debug:
-      msg: "Hello {{course}}"
+      msg: "Hello {{course}} | default('Ansible')"
+
+
+# Output-1:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook 14-filters.yml
+#   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+#   PLAY [default value] **************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [print default value] ********************************************************************************************************************************************************************
+#   fatal: [localhost]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'course' is undefined. 'course' is undefined\n\nThe error appears to be in '/home/ec2-user/learn-ansible/14-filters.yml': line 4, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: print default value\n    ^ here\n"}
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0 
