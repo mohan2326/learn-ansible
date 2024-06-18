@@ -12,7 +12,16 @@
   tasks:
   - name: convert into uppercase
     ansible.builtin.debug:
-      msg: "{{ greeting | upper }}" #the greeting message will be convert to uppercase
+      msg: "{{ greeting | upper }}" #the greeting message will be convert to uppercase; look into Output-3
+
+- name: lower case
+  hosts: localhost
+  vars:
+    greeting: "Hello, Good Morning"
+  tasks:
+  - name: convert into lowercase
+    ansible.builtin.debug:
+      msg: "{{ greeting | lower }}" #the greeting message will be convert to lowercase; 
 
 
 # Output-1:
@@ -47,3 +56,30 @@
 
 #   PLAY RECAP ************************************************************************************************************************************************************************************
 #   localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+
+# Output-3:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook 14-filters.yml
+#   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+#   PLAY [default value] **************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [print default value] ********************************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "Hello Ansible"
+#   }
+
+#   PLAY [upper case] *****************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [convert into uppercase] *****************************************************************************************************************************************************************
+#   ok: [localhost] => {
+#       "msg": "HELLO, GOOD MORNING"
+#   }
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
