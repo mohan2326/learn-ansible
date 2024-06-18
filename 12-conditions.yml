@@ -16,13 +16,13 @@
     register: USER #https://stackoverflow.com/questions/36059804/ansible-store-commands-stdout-in-new-variable --> output will store in register
     ignore_errors: true #we giving this because we are saying to user we know we will get this error so ignore the error and procces further; output can be seen in #output-1
 
-  - name: print user information #storing the output
+  - name: print user information #storing the output 
     ansible.builtin.debug:
-      msg: "User info: {{USER}}"
+      msg: "User info: {{USER}}" # Output can be see isn output-2 -> 'rc': 1 means failure --> 'rc': 0 means success
 
-  # - name: create user
-  #   ansible.builtin.command: useradd expense
-  #   when: USER.rc != 0 #condition
+  - name: create user
+    ansible.builtin.command: useradd expense
+    when: USER.rc != 0 #condition --> https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_conditionals.html --> 
 
   - name: say Hello
     ansible.builtin.debug:
@@ -63,3 +63,28 @@
 
 #   PLAY RECAP ************************************************************************************************************************************************************************************
 #   172.31.19.4                : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1 
+
+# Output-2:
+  # [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 12-conditions.yml
+
+  # PLAY [conditions] *****************************************************************************************************************************************************************************
+
+  # TASK [Gathering Facts] ************************************************************************************************************************************************************************
+  # ok: [172.31.19.4]
+
+  # TASK [check user exists or not] ***************************************************************************************************************************************************************
+  # fatal: [172.31.19.4]: FAILED! => {"changed": true, "cmd": ["id", "expense"], "delta": "0:00:00.006551", "end": "2024-06-17 23:55:37.572295", "msg": "non-zero return code", "rc": 1, "start": "2024-06-17 23:55:37.565744", "stderr": "id: ‘expense’: no such user", "stderr_lines": ["id: ‘expense’: no such user"], "stdout": "", "stdout_lines": []}
+  # ...ignoring
+
+  # TASK [print user information] *****************************************************************************************************************************************************************
+  # ok: [172.31.19.4] => {
+  #     "msg": "User info: {'changed': True, 'stdout': '', 'stderr': 'id: ‘expense’: no such user', 'rc': 1, 'cmd': ['id', 'expense'], 'start': '2024-06-17 23:55:37.565744', 'end': '2024-06-17 23:55:37.572295', 'delta': '0:00:00.006551', 'failed': True, 'msg': 'non-zero return code', 'stdout_lines': [], 'stderr_lines': ['id: ‘expense’: no such user']}"
+  # }
+
+  # TASK [say Hello] ******************************************************************************************************************************************************************************
+  # ok: [172.31.19.4] => {
+  #     "msg": "Hello"
+  # }
+
+  # PLAY RECAP ************************************************************************************************************************************************************************************
+  # 172.31.19.4                : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
