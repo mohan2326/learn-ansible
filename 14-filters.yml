@@ -21,7 +21,16 @@
   tasks:
   - name: convert into lowercase
     ansible.builtin.debug:
-      msg: "{{ greeting | lower }}" #the greeting message will be convert to lowercase; 
+      msg: "{{ greeting | lower }}" #the greeting message will be convert to lowercase; look into Output-4
+
+- name: remove duplicates
+  hosts: localhost
+  vars:
+    numbers: [1, 2, 3, 3, 4, 4, 5]
+  tasks:
+  - name: remove duplicates
+    ansible.builtin.debug:
+      msg: "{{ numbers | unique }}" #numbers mentioned it will remove duplicates;
 
 
 # Output-1:
