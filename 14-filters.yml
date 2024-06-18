@@ -42,6 +42,21 @@
     ansible.builtin.debug:
       msg: " min age: {{ ages | min }}, max age: {{ ages | max }}" #prints out minimum and maximum age; look into Output-6
 
+- name: convert dictionary into items/list
+  hosts: localhost
+  vars:
+    my_dict: # this is called as dictionary or map or key/value pairs.
+      Course: Ansbile
+      Trainer: Sivakumar
+      Duration: 120hr
+  tasks:
+  - name: before convert
+    ansible.builtin.debug:
+      msg: "Before convert: {{ my_dict }}"
+  - name: after convert
+    ansible.builtin.debug:
+      msg: "After convert: {{ my_dict | dict2items }}" #this will convert the dict to items
+
 
 # Output-1:
 #   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook 14-filters.yml
