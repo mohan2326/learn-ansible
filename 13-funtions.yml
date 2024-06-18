@@ -17,14 +17,38 @@
   - name: number is less than 10
     ansible.builtin.debug:
       msg: "Given number {{number}} is less than 10"
-    when: number < 10 #number | int < 10
+    #when: number < 10 # ansible can't convert text into number so we have got error while running #output-1; at that time we use ansibe filters
+    when: number | int < 10
 
   - name: number is greater than or equal to 10
     ansible.builtin.debug:
       msg: "Given number {{number}} is greater than or equal to 10"
-    when: number >= 10 #number | int >= 10
+    #when: number >= 10 # ansible can't convert text into number so we have got error while running #output-2; at that time we use ansibe filters
+    when: number | int >= 10
+
+# https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+# https://serverfault.com/questions/1030350/converting-string-to-integer-in-ansible-playbook
 
 # Output-1:
+#   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 13-funtions.yml
+#   [WARNING]:  * Failed to parse /home/ec2-user/learn-ansible/inventory.ini with ini plugin: /home/ec2-user/learn-ansible/inventory.ini:36: Section [all:children] includes undefined group:
+#   database
+#   [WARNING]: Unable to parse /home/ec2-user/learn-ansible/inventory.ini as an inventory source
+#   [WARNING]: No inventory was parsed, only implicit localhost is available
+#   please enter number: 14
+
+#   PLAY [check number] ***************************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [number is less than 10] *****************************************************************************************************************************************************************
+#   fatal: [localhost]: FAILED! => {"msg": "The conditional check 'number < 10' failed. The error was: Unexpected templating type error occurred on ({% if number < 10 %} True {% else %} False {% endif %}): '<' not supported between instances of 'str' and 'int'. '<' not supported between instances of 'str' and 'int'\n\nThe error appears to be in '/home/ec2-user/learn-ansible/13-funtions.yml': line 17, column 5, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n  tasks:\n  - name: number is less than 10\n    ^ here\n"}
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0 
+
+# Output-2:
 
 #   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 13-funtions.yml
 #   please enter number: 15
