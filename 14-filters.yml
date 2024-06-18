@@ -47,7 +47,7 @@
   vars:
     my_dict: # this is called as dictionary or map or key/value pairs.
       Course: Ansbile
-      Trainer: Sivakumar
+      Trainer: Mohan
       Duration: 120hr
   tasks:
   - name: before convert
