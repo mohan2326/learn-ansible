@@ -10,8 +10,8 @@
 # In ansible: 
 # number 
 # string 
-# list 
-# map
+# list - [] this how list are defined
+# map - {} this how map are defined
 
 - name: data types
   hosts: localhost
