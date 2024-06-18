@@ -3,7 +3,7 @@
   tasks:
   - name: print default value #varible is not defined anywhere so it will error out
     ansible.builtin.debug:
-      msg: "Hello {{course}} | default('Ansible')"
+      msg: "Hello {{course | default('Ansible') }}"
 
 
 # Output-1:
