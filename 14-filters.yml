@@ -1,9 +1,18 @@
 - name: default value
   hosts: localhost
   tasks:
-  - name: print default value #varible is not defined anywhere so it will error out
+  - name: print default value #varible is not defined anywhere so it will error out; lookinto output-1
     ansible.builtin.debug:
       msg: "Hello {{course | default('Ansible') }}" # we can define the variable in the message; lookinto output-2
+
+- name: upper case
+  hosts: localhost
+  vars:
+    greeting: "Hello, Good Morning"
+  tasks:
+  - name: convert into uppercase
+    ansible.builtin.debug:
+      msg: "{{ greeting | upper }}" #the greeting message will be convert to uppercase
 
 
 # Output-1:
