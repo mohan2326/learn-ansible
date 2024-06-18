@@ -1,0 +1,12 @@
+#https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+
+- name: demo on loops
+  hosts: localhost
+  tasks:
+  - name: print names
+    ansible.builtin.debug:
+      msg: "Hello {{item}} "
+    loop:
+    - linux
+    - shell
+    - ansible
