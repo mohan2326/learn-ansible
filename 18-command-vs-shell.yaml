@@ -11,3 +11,30 @@
     # If we need to run complex commands or scripts go for shell module.
     # Whatever works in command module, it will work in shell module, but vice versa is not true.
 
+# ansible command module didn't created file but the shell module created it. look into the output-1
+
+# Output-1:
+
+#   [ ec2-user@ip-172-31-38-25 ~/learning-ansible ]$ ansible-playbook 18-command-vs-shell.yaml
+#   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+#   PLAY [command vs shell] ***********************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [localhost]
+
+#   TASK [command module] *************************************************************************************************************************************************************************
+#   changed: [localhost]
+
+#   TASK [shell module] ***************************************************************************************************************************************************************************
+#   changed: [localhost]
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+  # [ ec2-user@ip-172-31-38-25 /tmp ]$ ls -lrt
+  # total 4
+  # drwx------ 3 root     root     60 Jun 19 18:51 systemd-private-c817f34eaeaa48dcad603aee501b78ac-dbus-broker.service-JJnTFd
+  # drwx------ 3 root     root     60 Jun 19 18:51 systemd-private-c817f34eaeaa48dcad603aee501b78ac-chronyd.service-VCijQW
+  # drwx------ 3 root     root     60 Jun 19 18:51 systemd-private-c817f34eaeaa48dcad603aee501b78ac-systemd-logind.service-FhTJ79
+  # -rw-r--r-- 1 ec2-user ec2-user 30 Jun 19 19:52 shell.txt
