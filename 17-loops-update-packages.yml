@@ -5,9 +5,28 @@
   tasks:
   - name: install packages
     ansible.builtin.dnf:
-      name: "{{ item.name }}"
-      state: "{{ item.state }}"
+      name: "{{ item.name }}" # giving the name the item package ; check outpit-1
+      state: "{{ item.state }}" # giving the state of the package  to install and remove ; check outpit-1
     loop:
-    - { name: 'mysql', state: 'latest'} # item
+    - { name: 'mysql', state: 'latest'} # item 
     - { name: 'nginx', state: 'absent'}
     - { name: 'postfix', state: 'absent'}
+
+
+# Output-1:
+
+#   [ ec2-user@ip-172-31-29-113 ~/learning-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=DevOps321 17-loops-update-packages.yml
+#   [WARNING]: Found both group and host with same name: localhost
+
+#   PLAY [install packages] ***********************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [172.31.29.213]
+
+#   TASK [install packages] ***********************************************************************************************************************************************************************
+#   ok: [172.31.29.213] => (item={'name': 'mysql', 'state': 'latest'})
+#   changed: [172.31.29.213] => (item={'name': 'nginx', 'state': 'absent'})
+#   changed: [172.31.29.213] => (item={'name': 'postfix', 'state': 'absent'})
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   172.31.29.213              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
