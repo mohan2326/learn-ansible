@@ -5,13 +5,13 @@
   tasks:
   - name: print names
     ansible.builtin.debug:
-      msg: "Hello {{item}} "
+      msg: "Hello {{item}} " #lookinto output-1
     loop:
     - linux
     - shell
     - ansible
 
-# Output:
+# Output-1:
 
 #   [ ec2-user@ip-172-31-22-153 ~/learn-ansible ]$ ansible-playbook 15-loops.yaml
 #   [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
