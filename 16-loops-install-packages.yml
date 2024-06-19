@@ -4,9 +4,27 @@
   tasks:
   - name: install packages
     ansible.builtin.dnf:
-      name: "{{ item }}" #by using the keyword item and installing packages
+      name: "{{ item }}" #by using the keyword item and installing packages ; chekc output-1
       state: latest
     loop:
     - mysql
     - nginx
     - postfix
+
+# Output-1:
+
+#   [ ec2-user@ip-172-31-29-113 ~/learning-ansible ]$ ansible-playbook -i inventory.ini -e ansible_user=ec2-user -e ansible_password=urpassword 16-loops-install-packages.yml
+#   [WARNING]: Found both group and host with same name: localhost
+
+#   PLAY [install packages] ***********************************************************************************************************************************************************************
+
+#   TASK [Gathering Facts] ************************************************************************************************************************************************************************
+#   ok: [172.31.29.213]
+
+#   TASK [install packages] ***********************************************************************************************************************************************************************
+#   changed: [172.31.29.213] => (item=mysql)
+#   changed: [172.31.29.213] => (item=nginx)
+#   changed: [172.31.29.213] => (item=postfix)
+
+#   PLAY RECAP ************************************************************************************************************************************************************************************
+#   172.31.29.213              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
